@@ -14,15 +14,14 @@ public class S3UploadWithPresignedURL {
     public static void main(String[] args) {
         String bucketName = "jdbctestbucket";
         String preSignedUrlPut = Main.createPresignedPutUrl(bucketName, S3_FILE_NAME);
-        String filePath1 = "/Users/astha1/Learn/S3/src/main/resources/etcd.txt"; // Replace with the path to your file
-        String filePath2 = "/Users/astha1/Learn/S3/src/main/resources/files.txt";
+        String filePath1 = "/etcd.txt"; // Replace with the path to your file
 
-        useHttpClientToPut(preSignedUrlPut, new File(filePath1));
-//        useHttpClientToPut(preSignedUrlPut, new File(filePath2));
+        URL resourceUrl = S3UploadWithPresignedURL.class.getResource(filePath1);
+        File file = new File(resourceUrl.getFile());
+
+        useHttpClientToPut(preSignedUrlPut, file);
         String preSignedUrlGet = Main.createPresignedGetUrl(bucketName, S3_FILE_NAME);
         useHttpClientToGet(preSignedUrlGet);
-
-
     }
 
 

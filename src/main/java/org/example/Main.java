@@ -15,8 +15,8 @@ import java.util.List;
 
 
 public class Main {
-    static String ACCESS_KEY = "<my key>";
-    static String SECRET_ACCESS_KEY = "<my secret key>";
+    static String ACCESS_KEY = "AKIAU7AKZSYL6VKE6CAW";
+    static String SECRET_ACCESS_KEY = "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";
 
     static String S3_FILE_NAME = "TestFolder/file.txt";
 
@@ -38,9 +38,6 @@ public class Main {
             System.out.println(object.key()+"  "+object.size());
             createPresignedGetUrl(bucketName, object.key());
         }
-
-        System.out.println("Presigned Put URL: " + createPresignedPutUrl(bucketName, S3_FILE_NAME));
-
     }
 
     /* Create a pre-signed URL to download an object in a subsequent GET request. */
