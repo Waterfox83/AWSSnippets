@@ -1,0 +1,84 @@
+Name:                 etcd-minikube
+Namespace:            kube-system
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Node:                 minikube/192.168.49.2
+Start Time:           Sun, 06 Nov 2022 14:59:02 +0530
+Labels:               component=etcd
+                      tier=control-plane
+Annotations:          kubeadm.kubernetes.io/etcd.advertise-client-urls: https://192.168.49.2:2379
+                      kubernetes.io/config.hash: 906edd533192a4db2396a938662a5271
+                      kubernetes.io/config.mirror: 906edd533192a4db2396a938662a5271
+                      kubernetes.io/config.seen: 2022-09-06T17:33:58.066653880Z
+                      kubernetes.io/config.source: file
+                      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:               Running
+IP:                   192.168.49.2
+IPs:
+  IP:           192.168.49.2
+Controlled By:  Node/minikube
+Containers:
+  etcd:
+    Container ID:  docker://dc5f86e13b666bf96921b06a37579afad1fe1341d9cdface5190bb30375e2589
+    Image:         k8s.gcr.io/etcd:3.5.3-0
+    Image ID:      docker-pullable://k8s.gcr.io/etcd@sha256:13f53ed1d91e2e11aac476ee9a0269fdda6cc4874eba903efd40daf50c55eee5
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      etcd
+      --advertise-client-urls=https://192.168.49.2:2379
+      --cert-file=/var/lib/minikube/certs/etcd/server.crt
+      --client-cert-auth=true
+      --data-dir=/var/lib/minikube/etcd
+      --experimental-initial-corrupt-check=true
+      --initial-advertise-peer-urls=https://192.168.49.2:2380
+      --initial-cluster=minikube=https://192.168.49.2:2380
+      --key-file=/var/lib/minikube/certs/etcd/server.key
+      --listen-client-urls=https://127.0.0.1:2379,https://192.168.49.2:2379
+      --listen-metrics-urls=http://127.0.0.1:2381
+      --listen-peer-urls=https://192.168.49.2:2380
+      --name=minikube
+      --peer-cert-file=/var/lib/minikube/certs/etcd/peer.crt
+      --peer-client-cert-auth=true
+      --peer-key-file=/var/lib/minikube/certs/etcd/peer.key
+      --peer-trusted-ca-file=/var/lib/minikube/certs/etcd/ca.crt
+      --proxy-refresh-interval=70000
+      --snapshot-count=10000
+      --trusted-ca-file=/var/lib/minikube/certs/etcd/ca.crt
+    State:          Running
+      Started:      Sun, 11 Dec 2022 22:58:33 +0530
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    255
+      Started:      Tue, 06 Dec 2022 21:46:29 +0530
+      Finished:     Sun, 11 Dec 2022 22:58:21 +0530
+    Ready:          True
+    Restart Count:  8
+    Requests:
+      cpu:        100m
+      memory:     100Mi
+    Liveness:     http-get http://127.0.0.1:2381/health delay=10s timeout=15s period=10s #success=1 #failure=8
+    Startup:      http-get http://127.0.0.1:2381/health delay=10s timeout=15s period=10s #success=1 #failure=24
+    Environment:  <none>
+    Mounts:
+      /var/lib/minikube/certs/etcd from etcd-certs (rw)
+      /var/lib/minikube/etcd from etcd-data (rw)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  etcd-certs:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/minikube/certs/etcd
+    HostPathType:  DirectoryOrCreate
+  etcd-data:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/lib/minikube/etcd
+    HostPathType:  DirectoryOrCreate
+QoS Class:         Burstable
+Node-Selectors:    <none>
+Tolerations:       :NoExecute op=Exists
+Events:            <none>
