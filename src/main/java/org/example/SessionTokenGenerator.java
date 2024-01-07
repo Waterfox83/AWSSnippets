@@ -9,8 +9,8 @@ import software.amazon.awssdk.services.sts.model.GetSessionTokenResponse;
 public class SessionTokenGenerator {
     public static void main(String[] args) {
         // Set your AWS access key ID and secret access key here (permanent credentials)
-        String accessKeyId = "AKIAU7AKZSYL6VKE6CAW";
-        String secretAccessKey = "x1E+uHGhfGG13r4FQfH3VAW5TZcR1U53Srln9tjw";
+        String accessKeyId = Main.ACCESS_KEY;
+        String secretAccessKey = Main.SECRET_ACCESS_KEY;
 
         StsClient stsClient = StsClient.builder()
                 .credentialsProvider(() -> AwsBasicCredentials.create(accessKeyId, secretAccessKey))
