@@ -15,8 +15,8 @@ import java.util.List;
 
 
 public class Main {
-    static String ACCESS_KEY = "AKIAU7AKZSYL6VKE6CAW";
-    static String SECRET_ACCESS_KEY = "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";
+    static String ACCESS_KEY = "<my key>";
+    static String SECRET_ACCESS_KEY = "<my secret key>";
 
     static String S3_FILE_NAME = "TestFolder/file.txt";
 
